@@ -1,4 +1,4 @@
-class postgresql
+<?php class postgresql
 {
     public $dbconn;
     public $debug;
