@@ -25,26 +25,26 @@ if(isset($_POST['chapter_id'])){
 
       $sql2 = "SELECT lesson_item_id,lesson_item_name,B.lesson_id,content FROM public.lesson_item A,public.lesson B 
       WHERE A.lesson_id = B.lesson_id AND B.chapter_id = '$chapter_id'";
-//       $result2 = $dbconnection->select($sql2);
-//       $arr_lesson_item = array();
-//       if($result2!==null){
-//         if(pg_num_row($result2)>0){
-//           while($data = pg_fetch_object($result2)){
-//             array_push($arr_lesson_item,$data);
-//           }
+      $result2 = $dbconnection->select($sql2);
+      $arr_lesson_item = array();
+      if($result2!==null){
+        if(pg_num_rows($result2)>0){
+          while($data = pg_fetch_object($result2)){
+            array_push($arr_lesson_item,$data);
+          }
 
-//           $res = new Result(Constant::SUCCESS, 'Operation complete successfully.');   
-//           array_push($arr,$arr_lesson);
-//           array_push($arr,$arr_lesson_item);
-//           $res->data = $arr;
-//         }
-//         else{
-//           $res = new Result(Constant::GENERAL_ERROR , 'Lesson item is not available.');  
-//         }
-//       }
-//       else{
-//         $res = new Result(Constant::GENERAL_ERROR, 'There was an error while processing request. Please try again later.');
-//       }
+          $res = new Result(Constant::SUCCESS, 'Operation complete successfully.');   
+          array_push($arr,$arr_lesson);
+          array_push($arr,$arr_lesson_item);
+          $res->data = $arr;
+        }
+        else{
+          $res = new Result(Constant::GENERAL_ERROR , 'Lesson item is not available.');  
+        }
+      }
+      else{
+        $res = new Result(Constant::GENERAL_ERROR, 'There was an error while processing request. Please try again later.');
+      }
     }
     else{
        $res = new Result(Constant::GENERAL_ERROR, 'There was an error while processing request. Please try again later.');
