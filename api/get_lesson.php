@@ -14,7 +14,7 @@ if(isset($_POST['chapter_id'])){
     $arr = array();
     $arr_lesson = array();
     if($result!==null){
-      if(pg_num_row()>0){
+      if(pg_num_rows($result)>0){
         while($data = pg_fetch_object($result)){
           array_push($arr_lesson,$data);
         }
