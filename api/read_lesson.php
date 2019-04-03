@@ -7,6 +7,7 @@ $inputJSON = file_get_contents('php://input');
 $input= json_decode( $inputJSON ,true);
 if($input!=null){
   $lesson_item_id = $input->lesson_item_id;
+  echo "lesson_item_id = $lesson_item_id";
   include "../lib/db.php";
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
