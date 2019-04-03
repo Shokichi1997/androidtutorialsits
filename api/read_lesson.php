@@ -44,4 +44,4 @@ if($input!=null){
 else{
     $res = new Result(Constant::INVALID_PARAMETERS, 'Invalid parameters.');
 }
-echo (json_encode($res));
+echo (json_encode($res),JSON_UNESCAPED_UNICODE);
