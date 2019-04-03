@@ -6,11 +6,11 @@ $res = null;
 include "../lib/db.php";
 $dbconnection = new postgresql("");
 if($dbconnection->isValid()){
-  $sql = "SELECT chapter_id,chapter_name FROM public.chapter;
+  $sql = "SELECT chapter_id,chapter_name FROM public.chapter";
   $result = $dbconnection->select($sql);
   $arr = array();
   if($result!==null){
-    if(pg_num_row()>0){
+    if(pg_num_rows()>0){
       while($data = pg_fetch_object($result)){
         array_push($arr,$data);
       }
