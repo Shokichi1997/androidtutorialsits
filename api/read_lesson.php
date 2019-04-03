@@ -8,7 +8,7 @@ if(isset($_GET['lesson_item_id'])){
   include "../lib/db.php";
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
-    $sql = "SELECT content FROM public.lesson_item_detail WHERE lesson_item_id = '$lesson_item_id'";
+    $sql = "SELECT content FROM public.lesson_item WHERE lesson_item_id = '$lesson_item_id'";
     $result = $dbconnection->select($sql);
     if($result!==null){
       if(pg_num_rows($result)>0)
