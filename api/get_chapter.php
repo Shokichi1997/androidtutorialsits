@@ -10,7 +10,7 @@ if($dbconnection->isValid()){
   $result = $dbconnection->select($sql);
   $arr = array();
   if($result!==null){
-    if(pg_num_rows()>0){
+    if(pg_num_rows($result)>0){
       while($data = pg_fetch_object($result)){
         array_push($arr,$data);
       }
