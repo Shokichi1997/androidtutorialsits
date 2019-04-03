@@ -20,8 +20,7 @@ if($input!=null){
           $content = (pg_fetch_object($result))->content;
           if($content!=null){
             $res = new Result(Constant::SUCCESS, 'Operation complete successfully.');   
-            //$res->data = $content;
-            $res->data = "Xin chào";
+            $res->data = $content;
           }
           else{
             $res = new Result(Constant::GENERAL_ERROR , 'Content of lesson item is not available.');   
