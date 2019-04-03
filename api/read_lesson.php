@@ -16,6 +16,7 @@ if($input!=null){
     if($result!==null){
       if(pg_num_rows($result)>0)
       {
+          default_charset = "utf-8";
           $content = (pg_fetch_object($result))->content;
           if($content!=null){
             $res = new Result(Constant::SUCCESS, 'Operation complete successfully.');   
