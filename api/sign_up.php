@@ -8,7 +8,7 @@ if(isset($_POST['email'])&&isset($_POST['full_name'])&&isset($_POST['password'])
   $email = $_POST['email'];
   $full_name = $_POST['full_name'];
   $password = $_POST['password'];
-  $role = false; //mac dinh 
+  $role = "FALSE"; //mac dinh 
   
   //Kết nối database
   include ('../lib/db.php');
