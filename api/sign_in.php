@@ -4,8 +4,8 @@ include "../lib/data.php";
 //Test
 $res = null;
 if (isset($_POST["email"]) && isset($_POST["password"])) {
-    $username = $_POST["username"];
-    $password = $_POST["email"];
+    $assword = $_POST["password"];
+    $email = $_POST["email"];
     
     $sql = "SELECT * FROM public.user WHERE email ='$email'";
     // ket noi database
