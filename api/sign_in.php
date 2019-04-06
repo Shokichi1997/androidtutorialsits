@@ -4,7 +4,7 @@ include "../lib/data.php";
 //Test
 $res = null;
 if (isset($_POST["email"]) && isset($_POST["password"])) {
-    $assword = $_POST["password"];
+    $password = $_POST["password"];
     $email = $_POST["email"];
     
     $sql = "SELECT * FROM public.user WHERE email ='$email'";
@@ -20,14 +20,14 @@ if (isset($_POST["email"]) && isset($_POST["password"])) {
             $dbpassword = null;
             $user = null;
             while ($data = pg_fetch_object($result)) {
-                $dbpassword = $data->pass_word;
+                $dbpassword = $data->password;
                 $user = $data;
                 break;
             }
             if ($dbpassword !== null) {
                 if (strcasecmp($dbpassword, $password) == 0) {
                     $res = new Result(Constant::SUCCESS, 'Operation complete successfully.');
-                    unset($user->pass_word);
+                    unset($user->password);
                     $res->data = $user;
                 } else {
                     $res = new Result(Constant::INVALID_PASSWORD, 'Password is not matching.');
