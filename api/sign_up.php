@@ -21,7 +21,7 @@ if(isset($_POST['email'])&&isset($_POST['full_name'])&&isset($_POST['password'])
       if($result!==null){
         if(pg_num_rows($result)==0){
             $sql_dk = "INSERT INTO public.user(full_name,email,password,role,date_create)
-            values ('$fullname','$email','$password','$role',CURRENT_DATE)";
+            values ('$full_name','$email','$password','$role',CURRENT_DATE)";
             $dbconnection->execute($sql_dk);
 
             //Registered successfully => return user infor 
