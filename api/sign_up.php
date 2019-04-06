@@ -33,7 +33,6 @@ if(isset($_POST['email'])&&isset($_POST['full_name'])&&isset($_POST['password'])
 
             $res = new Result(Constant::SUCCESS,'Registered successfully');
             $res->data = $user;
-          }
         }
         else{
            $res = new Result(Constant::USER_EXIST , 'User is exist');
