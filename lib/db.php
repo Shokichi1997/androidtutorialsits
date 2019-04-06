@@ -8,8 +8,10 @@
     public function __construct($debug)
     {
         try {
+            
             $this->dbconn = pg_connect("host=ec2-107-20-177-161.compute-1.amazonaws.com
   port=5432 dbname=d84itgiajtdqcl user=cnnszoclpwlyrh password=442fa4c812a79f00e2c37beb2fe9627db6224f9a6d321b531f56bf43abd175c9") or die('Could not connect: ' . pg_last_error());
+            pg_set_client_encoding($this->dbconn, "UNICODE");
         } catch (Exception $ex) {}
         $this->debug = ($debug === '1');
     }
