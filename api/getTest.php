@@ -4,11 +4,12 @@ include "../lib/data.php";
 $result = null;
 $res = null;
 if(isset($_GET['lesson_id'])){
-include "../lib/db.php";
+  include "../lib/db.php";
+  $lesson_id = $_GET['lesson_id'];
 
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
-    $sql = "SELECT question_id,content,type_qs FROM PUBLIC.question order by random() limit 10";
+    $sql = "SELECT question_id,content,type_qs FROM PUBLIC.question WHERE lesson_id = '$lesson_id'  order by random() limit 10" ;
     $result = $dbconnection->select($sql);
     $arr_question = array();
     if($result!==null){
@@ -20,7 +21,7 @@ include "../lib/db.php";
         
         foreach ($arr_question as $qs) {
           $question_id = $qs->question_id;
-          $sql_answer = "SELECT answer_id,answer_content,result FROM public.answer WHERE question_id = '$question_id'";
+          $sql_answer = "SELECT answer_id,answer_content,result FROM public.answer WHERE question_id = '$question_id' order by random()";
           $result_answer = $dbconnection->select($sql_answer);
           if($result_answer!==null){
             if(pg_num_rows($result_answer)>0){
