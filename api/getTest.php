@@ -35,25 +35,25 @@ if(isset($_GET['lesson_id'])){
               }
               $qs->answers = $arr_answers;
             }
+            //pg_num_rows($result_answer)>0
             else{
               $res = new Result(Constant::GENERAL_ERROR, 'Question do not have answers.');
             }
           }
+          //$result_answer!==null
           else{
             $res = new Result(Constant::GENERAL_ERROR, 'There was an error while processing request. Please try again later.');
           }
         }
         $res = new Result(Constant::SUCCESS, 'Operation complete successfully.');   
         $res->data = $arr_question;
-      }
-      else{
-        $res = new Result(Constant::GENERAL_ERROR , 'Lesson is not available.');  
-      }
+     //pg_num_rows($result)>0 
     }
     else{
        $res = new Result(Constant::GENERAL_ERROR, 'There was an error while processing request. Please try again later.');
     }
   }
+  //$dbconnection->isValid()
   else{
       $res = new Result(Constant::INVALID_DATABASE , 'Database is invalid.');  
   }
