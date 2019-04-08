@@ -15,7 +15,7 @@ if(isset($_GET['lesson_id'])){
     if($result!==null){
       if(pg_num_rows($result)>0){
         while($data = pg_fetch_object($result)){
-          $question = new ($data->question_id,$data->content,$data->type_qs);
+          $question = new Question($data->question_id,$data->content,$data->type_qs);
           array_push($arr_question,$question);
         }
         
