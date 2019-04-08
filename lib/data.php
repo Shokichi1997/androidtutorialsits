@@ -21,3 +21,18 @@ class Constant
     const EMAIL_EXIST = 4;
     const INVALID_DATABASE = -3;   
 }
+
+class Question
+{
+    public $question_id;
+    public $content;
+    public $type_qs;
+    public $answers;
+    
+    public function __construct($question_id, $content, $type_qs)
+    {
+        $this->question_id = $question_id;
+        $this->content = $content;
+        $this->type_qs = $type_qs;
+    }
+}
