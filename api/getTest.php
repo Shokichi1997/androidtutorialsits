@@ -28,10 +28,7 @@ if(isset($_GET['lesson_id'])){
               $arr_answers = array();
               $answer = null;
               while($data = pg_fetch_object($result_answer)){
-                echo $data->answer_id;
-                $answer->answer_id = $data->answer_id;
-                $answer->answer_content = $data->answer_content;
-                $answer->result = $data->result;
+                $answer= new Answer($data->answer_id,$data->answer_content,$data->result);
                 array_push($arr_answers,$answer);
               }
               $qs->answers = $arr_answers;
