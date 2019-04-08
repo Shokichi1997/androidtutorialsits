@@ -12,12 +12,12 @@ if(isset($_GET['lesson_id'])){
     $sql = "SELECT question_id,content,type_qs FROM PUBLIC.question WHERE lesson_id = '$lesson_id'  order by random() limit 10" ;
     $result = $dbconnection->select($sql);
     $arr_question = array();
-//     if($result!==null){
-//       if(pg_num_rows($result)>0){
-//         while($data = pg_fetch_object($result)){
-//           $question = new ($data->question_id,$data->content,$data->type_qs);
-//           array_push($arr_question,$question);
-//         }
+    if($result!==null){
+      if(pg_num_rows($result)>0){
+        while($data = pg_fetch_object($result)){
+          $question = new ($data->question_id,$data->content,$data->type_qs);
+          array_push($arr_question,$question);
+        }
         
 //         foreach ($arr_question as $qs) {
 //           $question_id = $qs->question_id;
@@ -48,10 +48,14 @@ if(isset($_GET['lesson_id'])){
 //         $res = new Result(Constant::SUCCESS, 'Operation complete successfully.');   
 //         $res->data = $arr_question;
 //      //pg_num_rows($result)>0 
-//     }
-//     else{
-//        $res = new Result(Constant::GENERAL_ERROR, 'There was an error while processing request. Please try again later.');
-//     }
+      }
+      else{
+        $res = new Result(Constant::GENERAL_ERROR, 'This lesson do not have questions.');
+      }
+    }
+    else{
+       $res = new Result(Constant::GENERAL_ERROR, 'There was an error while processing request. Please try again later.');
+    }
   }
   //$dbconnection->isValid()
   else{
