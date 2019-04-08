@@ -36,3 +36,17 @@ class Question
         $this->type_qs = $type_qs;
     }
 }
+
+class Answer
+{
+    public $answer_id;
+    public $answer_content;
+    public $result;
+    
+    public function __construct($answer_id, $answer_content, $result)
+    {
+        $this->answer_id = $answer_id;
+        $this->answer_content = $answer_content;
+        $this->result = $result;
+    }
+}
