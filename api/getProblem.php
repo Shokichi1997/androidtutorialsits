@@ -40,7 +40,7 @@ if(isset($_GET['lesson_id'])){
             $res = new Result(Constant::GENERAL_ERROR, 'There was an error while processing request. Please try again later.');
           }
         $res = new Result(Constant::SUCCESS, 'Operation complete successfully.');   
-        $res->data = $arr_question;
+        $res->data = $question;
      //pg_num_rows($result)>0 
       }
       else{
