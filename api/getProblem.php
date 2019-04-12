@@ -8,13 +8,13 @@ if(isset($_GET['lesson_id'])){
   $lesson_id = $_GET['lesson_id'];
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
-    $sql = "SELECT question_id,content,type_qs FROM PUBLIC.question WHERE lesson_id = '$lesson_id'  order by random() limit 1" ;
+    $sql = "SELECT question_id,content,type_qs,hint FROM PUBLIC.question WHERE lesson_id = '$lesson_id'  order by random() limit 1" ;
     $result = $dbconnection->select($sql);
     $question = null;
     if($result!==null){
       if(pg_num_rows($result)>0){
         while($data = pg_fetch_object($result)){
-          $question = new Question($data->question_id,$data->content,$data->type_qs);
+          $question = new Question($data->question_id,$data->content,$data->type_qs,$data->hint);
           break;
         }
           $question_id = $question->question_id;
