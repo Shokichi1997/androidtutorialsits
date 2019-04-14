@@ -7,7 +7,7 @@ $res = null;
 include "../lib/db.php";
 $dbconnection = new postgresql("");
 if($dbconnection->isValid()){
-  $sql = "SELECT * FROM public.user";
+  $sql = "SELECT * FROM public.user WHERE role='3' ";
   $result = $dbconnection->select($sql);
   $arr = array();
   if($result!==null){
