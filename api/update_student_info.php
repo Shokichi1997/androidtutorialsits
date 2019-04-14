@@ -12,7 +12,7 @@ if(isset($_POST['user_id'])&&
   $user_id      = $_POST['user_id'];
   $password     = $_POST['password'];
   $email        = $_POST['email'] ;
-  $full_name    = $_POST['$full_name'];    
+  $full_name    = $_POST['full_name'];    
   //connect database
   include ('../lib/db.php');
   //check acount is exsit
@@ -34,7 +34,7 @@ if(isset($_POST['user_id'])&&
             $user->email=$email;
             
             $res->data=user;//set data for res
-            $res = new Result(Constant::SUCCESS,'Registered successfully');
+            $res = new Result(Constant::SUCCESS,'Update successfully');
         }// Excute sql update info student
         else{
            $res = new Result(Constant::USER_EXIST , 'User is not exist');
