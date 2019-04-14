@@ -1,5 +1,6 @@
     
 <?php
+echo "abc";
 header('Content-Type: application/json; charset=utf-8');
 include "../lib/data.php";
 $result = null;
