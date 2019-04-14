@@ -12,7 +12,7 @@ if(isset($_GET['student_code'])){
   //connect database
   include ('../lib/db.php');
   //check acount is exsit
-  $sql_find_user = "SELECT * FROM public.user WHERE studet_code = '$student_code'";
+  $sql_find_user = "SELECT * FROM public.user WHERE student_code = '$student_code'";
   $dbconnection = new postgresql("");
   if($dbconnection->isValid())
   {
@@ -20,7 +20,7 @@ if(isset($_GET['student_code'])){
       if($result!==null){
         if(pg_num_rows($result)==0){  
             $sql_dk = "INSERT INTO public.user(full_name,password,role,student_code,date_create)
-            values ('$full_name','$password','$role','$studet_code',CURRENT_DATE)";
+            values ('$full_name','$password','$role','$student_code',CURRENT_DATE)";
             $dbconnection->execute($sql_dk);
             //Registered successfully => return user infor 
             $res = new Result(Constant::SUCCESS,'Registered successfully');
