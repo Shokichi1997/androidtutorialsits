@@ -9,7 +9,7 @@ if(isset($_GET['lesson_id'])&&isset($_GET['user_id'])){
   $user_id = $_GET['user_id'];
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
-    include "../lib/functions.php";
+    //include "../lib/functions.php";
     //$level = getLevelQuestion($dbconnection,$user_id,$lesson_id);
     $level = 3;
     $sql = "SELECT question_id,content,type_qs,hint,level FROM PUBLIC.question WHERE lesson_id = '$lesson_id' AND level <= '$level' order by random() limit 1" ;
