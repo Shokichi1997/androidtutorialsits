@@ -29,12 +29,14 @@ class Question
     public $type_qs;
     public $answers;
     public $hint;
-    public function __construct($question_id, $content, $type_qs, $hint)
+    public $level;
+    public function __construct($question_id, $content, $type_qs, $hint,$level)
     {
         $this->question_id = $question_id;
         $this->content = $content;
         $this->type_qs = $type_qs;
         $this->hint = $hint;
+        $this->level = $level;
     }
 }
 
