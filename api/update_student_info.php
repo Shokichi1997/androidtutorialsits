@@ -5,20 +5,18 @@ include "../lib/data.php";
 $res    = null;
 $result =null;
 if(isset($_POST['user_id'])&&
-   isset($_POST['student_code'])&&
    isset($_POST['password'])&&
    isset($_POST['full_name'])&&
    isset($_POST['email']) )
 {
-  $user_id      = $_POST['user_id']
-  $student_code = $_POST['student_code'];
+  $user_id      = $_POST['user_id'];
   $password     = $_POST['password'];
   $email        = $_POST['email'] ;
   $full_name    = $_POST['$full_name'];    
   //connect database
   include ('../lib/db.php');
   //check acount is exsit
-  $sql_find_user = "SELECT * FROM public.user WHERE studet_code = '$student_code'";
+  $sql_find_user = "SELECT * FROM public.user WHERE user_id = '$user_id'";
   $dbconnection = new postgresql("");
   if($dbconnection->isValid())
   {
