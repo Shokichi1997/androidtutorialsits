@@ -20,8 +20,8 @@ if(isset($_GET['lesson_id'])&&isset($_GET['user_id'])&&isset($_GET['score'])){
           $current_score = $data->score;
           break;
         }
-        $scoreAdd = $scoreAdd + current_score;
-        $sql_update = "UPDATE public.score SET score = '$scoreAdd'";
+        $scoreAdd = $scoreAdd + $current_score;
+        $sql_update = "UPDATE public.score SET score = '$scoreAdd' WHERE user_id = '$user_id' AND lesson_id = '$lesson_id'";
         $dbconnection->execute($sql_update);
       }
       else{
