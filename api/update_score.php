@@ -29,7 +29,7 @@ if(isset($_GET['lesson_id'])&&isset($_GET['user_id'])&&isset($_GET['score'])){
         $dbconnection->execute($sql_ins);
       }
       $res = new Result(Constant::SUCCESS , 'Processing request successfully.');
-      $res->$data = $scoreAdd;
+      $res->data = $scoreAdd;
     }
     else{
        $res = new Result(Constant::GENERAL_ERROR, 'There was an error while processing request. Please try again later.');
