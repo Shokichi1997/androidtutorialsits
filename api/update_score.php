@@ -15,19 +15,21 @@ if(isset($_GET['lesson_id'])&&isset($_GET[user_id])&&isset($_GET['score'])){
     if($result!==null){
       if(pg_num_rows($result)>0){
         $current_score = null;
+        $scoreAdd = $score;
         while($data = pg_fetch_object($result)){
           $current_score = $data->score;
           break;
         }
-        $scoreAdd = $score + current_score;
+        $scoreAdd = $scoreAdd + current_score;
         $sql_update = "UPDATE public.score SET score = '$scoreAdd'";
         $dbconnection->execute($sql_update);
       }
       else{
-        $sql_ins = "INSERT INTO public.score VALUES('$user_id','$lesson_id',$score)";
+        $sql_ins = "INSERT INTO public.score VALUES('$user_id','$lesson_id','$scoreAdd')";
         $dbconnection->execute($sql_ins);
       }
       $res = new Result(Constant::SUCCESS , 'Processing request successfully.');
+      $res->$data = $scoreAdd;
     }
     else{
        $res = new Result(Constant::GENERAL_ERROR, 'There was an error while processing request. Please try again later.');
