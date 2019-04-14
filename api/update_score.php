@@ -9,6 +9,7 @@ if(isset($_GET['lesson_id'])&&isset($_GET['user_id'])&&isset($_GET['score'])){
   $score = $_GET['score'];
   $scoreAdd = $score;
   
+  include "..lib/db.php";
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
     $sql = "SELECT score FROM PUBLIC.scores WHERE user_id = 'user_id'  AND lesson_id ='lesson_id'" ;
