@@ -4,7 +4,6 @@ header('Content-Type: application/json; charset=utf-8');
 include "../lib/data.php";
 $result = null;
 $res = null;
-echo "abc";
 include "../lib/db.php";
 $dbconnection = new postgresql("");
 if($dbconnection->isValid()){
