@@ -6,7 +6,7 @@ $res = null;
 if(isset($_GET['lesson_id'])&&isset($_GET['user_id'])){
   include "../lib/db.php";
   $lesson_id = $_GET['lesson_id'];
-  $user_id = $_GET['lesson_id'];
+  $user_id = $_GET['user_id'];
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
     include "../lib/functions.php";
@@ -17,7 +17,7 @@ if(isset($_GET['lesson_id'])&&isset($_GET['user_id'])){
     if($result!==null){
       if(pg_num_rows($result)>0){
         while($data = pg_fetch_object($result)){
-          $question = new Question($data->question_id,$data->content,$data->type_qs,$data->hint);
+          $question = new Question($data->question_id,$data->content,$data->type_qs,$data->hint,$data->level);
           break;
         }
           $question_id = $question->question_id;
