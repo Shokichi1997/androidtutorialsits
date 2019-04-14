@@ -3,12 +3,15 @@ header('Content-Type: application/json; charset=utf-8');
 include "../lib/data.php";
 $result = null;
 $res = null;
-if(isset($_GET['lesson_id'])){
+if(isset($_GET['lesson_id'])&&isset($_GET['user_id'])){
   include "../lib/db.php";
   $lesson_id = $_GET['lesson_id'];
+  $user_id = $_GET['lesson_id'];
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
-    $sql = "SELECT question_id,content,type_qs,hint FROM PUBLIC.question WHERE lesson_id = '$lesson_id'  order by random() limit 1" ;
+    include "../lib/functions.php";
+    $level = getLevelQuestion($dbconnection,$user_id,$lesson_id);
+    $sql = "SELECT question_id,content,type_qs,hint FROM PUBLIC.question WHERE lesson_id = '$lesson_id' AND level <= '$level' order by random() limit 1" ;
     $result = $dbconnection->select($sql);
     $question = null;
     if($result!==null){
