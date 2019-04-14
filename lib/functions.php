@@ -6,7 +6,7 @@ function getLevelQuestion($dbconnection,$user_id,$lesson_id){
 		if(pg_num_rows($result)>0){
 			$score = 1;
 			while ($data = pg_fetch_object($result)) {
-				score = $data->score;
+				$score = $data->score;
 				break;
 			}
 			if($score < 5){
