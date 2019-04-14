@@ -11,7 +11,7 @@ if(isset($_GET['lesson_id'])&&isset($_GET['user_id'])&&isset($_GET['score'])){
   
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
-    $sql = "SELECT score FROM PUBLIC.score WHERE user_id = 'user_id'  AND lesson_id ='lesson_id'" ;
+    $sql = "SELECT score FROM PUBLIC.scores WHERE user_id = 'user_id'  AND lesson_id ='lesson_id'" ;
     $result = $dbconnection->select($sql);
     if($result!==null){
       if(pg_num_rows($result)>0){
@@ -21,11 +21,11 @@ if(isset($_GET['lesson_id'])&&isset($_GET['user_id'])&&isset($_GET['score'])){
           break;
         }
         $scoreAdd = $scoreAdd + $current_score;
-        $sql_update = "UPDATE public.score SET score = '$scoreAdd' WHERE user_id = '$user_id' AND lesson_id = '$lesson_id'";
+        $sql_update = "UPDATE public.scores SET score = '$scoreAdd' WHERE user_id = '$user_id' AND lesson_id = '$lesson_id'";
         $dbconnection->execute($sql_update);
       }
       else{
-        $sql_ins = "INSERT INTO public.score VALUES('$user_id','$lesson_id','$scoreAdd')";
+        $sql_ins = "INSERT INTO public.scores VALUES('$user_id','$lesson_id','$scoreAdd')";
         $dbconnection->execute($sql_ins);
       }
       $res = new Result(Constant::SUCCESS , 'Processing request successfully.');
