@@ -6,7 +6,7 @@ $res = null;
 if(isset($_GET['lesson_id'])&&isset($_GET[user_id])&&isset($_GET['score'])){
   $lesson_id = $_GET['lesson_id'];
   $user_id = $_GET['user_id'];
-  $score = $_GET[score];
+  $score = $_GET['score'];
   
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
