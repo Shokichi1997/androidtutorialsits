@@ -12,7 +12,7 @@ if(isset($_GET['lesson_id'])&&isset($_GET['user_id'])&&isset($_GET['score'])){
   include "../lib/db.php";
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
-    $sql = "SELECT score FROM PUBLIC.scores WHERE user_id = 'user_id'  AND lesson_id ='lesson_id'" ;
+    $sql = "SELECT score FROM PUBLIC.scores WHERE user_id = '$user_id'  AND lesson_id ='$lesson_id'" ;
     $result = $dbconnection->select($sql);
     if($result!==null){
       if(pg_num_rows($result)>0){
