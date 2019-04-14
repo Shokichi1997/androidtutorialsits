@@ -7,6 +7,7 @@ if(isset($_GET['lesson_id'])&&isset($_GET['user_id'])&&isset($_GET['score'])){
   $lesson_id = $_GET['lesson_id'];
   $user_id = $_GET['user_id'];
   $score = $_GET['score'];
+  $scoreAdd = $score;
   
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
@@ -15,7 +16,6 @@ if(isset($_GET['lesson_id'])&&isset($_GET['user_id'])&&isset($_GET['score'])){
     if($result!==null){
       if(pg_num_rows($result)>0){
         $current_score = null;
-        $scoreAdd = $score;
         while($data = pg_fetch_object($result)){
           $current_score = $data->score;
           break;
