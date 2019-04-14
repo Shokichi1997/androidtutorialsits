@@ -3,7 +3,7 @@ header('Content-Type: application/json; charset=utf-8');
 include "../lib/data.php";
 $result = null;
 $res = null;
-if(isset($_GET['lesson_id'])&&isset($_GET[user_id])&&isset($_GET['score'])){
+if(isset($_GET['lesson_id'])&&isset($_GET['user_id'])&&isset($_GET['score'])){
   $lesson_id = $_GET['lesson_id'];
   $user_id = $_GET['user_id'];
   $score = $_GET['score'];
