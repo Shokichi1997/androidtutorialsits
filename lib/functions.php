@@ -26,7 +26,7 @@ function getLevelQuestion($dbconnection,$user_id,$lesson_id){
 }
 
 function getLessonInfo($dbconnection, $lesson_id){
-	$sql = "SELECT lesson_id,lesson_name FROM public.lesson WHERE lesson_id = '$lesson_id'";
+	$sql = "SELECT lesson_id,lesson_name,chapter_id,lesson_icon FROM public.lesson WHERE lesson_id = '$lesson_id'";
 	$result = $dbconnection->select($sql);
 	if($result!==null){
 		if(pg_num_rows($result)>0){
