@@ -1,22 +1,19 @@
 <?php 
-	header('Access-Control-Allow-Origin: *');
-	header('Content-Type: application/json; charset=utf-8');
-	include "../lib/data.php";
-	$result = null;
-	$res = null;
-	include "../lib/db.php";
-  	$user_id = $_GET['user_id'];
-  	$dbconnection = new postgresql("");
-  	if($dbconnection->isValid()){
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json; charset=utf-8');
+include "../lib/data.php";
+$result = null;
+$res = null;
+include "../lib/db.php";
+$dbconnection = new postgresql("");
+if($dbconnection->isValid()){
     $sql = "SELECT lesson_id,lesson_name FROM PUBLIC.lesson";
     $result = $dbconnection->select($sql);
     $res_lesson = array();
     if($result!==null){
       	if(pg_num_rows($result)>0){
 	        while($data = pg_fetch_object($result)){
-	        	if($lesson!=null){
-	        		array_push($res_lesson, $lesson);
-	        	}
+	        	array_push($res_lesson, $data);
 	        }	          
 	        $res = new Result(Constant::SUCCESS, 'Operation complete successfully.');   
 	        $res->data = $res_lesson;
