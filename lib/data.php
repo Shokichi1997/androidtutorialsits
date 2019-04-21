@@ -53,3 +53,19 @@ class Answer
         $this->result = $result;
     }
 }
+
+class Example
+{
+    public $name;
+    public $java_code;
+    public $xml_code;
+    public $icon;
+    
+    public function __construct($name,$java_code,$xml_code,$icon)
+    {
+        $this->name = $name;
+        $this->java_code = $java_code;
+        $this->xml_code = $xml_code;
+        $this->icon = $icon;
+    }
+}
