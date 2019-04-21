@@ -7,13 +7,17 @@ $res = null;
 include "../lib/db.php";
 $dbconnection = new postgresql("");
 if($dbconnection->isValid()){
-    $sql = "SELECT name,java_code,xml_code FROM PUBLIC.examples";
+	$url = "https://itstutorials.000webhostapp.com/wp-content/uploads/";
+    $sql = "SELECT name,java_code,xml_code,icon FROM PUBLIC.examples";
     $result = $dbconnection->select($sql);
     $res_exam = array();
     if($result!==null){
       	if(pg_num_rows($result)>0){
-	        while($data = pg_fetch_object($result)){
-	        	array_push($res_exam, $data);
+		while($data = pg_fetch_object($result)){
+			$img = $data->icon;
+			file_put_contents($img, file_get_contents($url));
+			$icon = base64_encode($img);
+	        	array_push($res_exam, new Example($data->name,$data->java_code,$data->xml_code,$icon));
 	        }	          
 	        $res = new Result(Constant::SUCCESS, 'Operation complete successfully.');   
 	        $res->data = $res_exam;
