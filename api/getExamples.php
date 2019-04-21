@@ -15,8 +15,8 @@ if($dbconnection->isValid()){
       	if(pg_num_rows($result)>0){
 		while($data = pg_fetch_object($result)){
 			$img = $data->icon;
-			file_put_contents($img, file_get_contents($url));
-			$icon = base64_encode($img);
+			$img2 = file_get_contents($url.$img);
+			$icon = base64_encode($img2);
 	        	array_push($res_exam, new Example($data->name,$data->java_code,$data->xml_code,$icon));
 	        }	          
 	        $res = new Result(Constant::SUCCESS, 'Operation complete successfully.');   
