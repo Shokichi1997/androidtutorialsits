@@ -10,7 +10,7 @@ if($input!=null){
   include "../lib/db.php";
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
-    $sql = "SELECT java_code,xml_code FROM public.examples WHERE id = '$example_id'";
+    $sql = "SELECT name,java_code,xml_code FROM public.examples WHERE id = '$example_id'";
     $result = $dbconnection->select($sql);
     if($result!==null){
       if(pg_num_rows($result)>0)
