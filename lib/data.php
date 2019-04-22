@@ -56,13 +56,15 @@ class Answer
 
 class Example
 {
+    public $id;
     public $name;
     public $java_code;
     public $xml_code;
     public $icon;
     
-    public function __construct($name,$java_code,$xml_code,$icon)
+    public function __construct($id,$name,$java_code,$xml_code,$icon)
     {
+        $this->id = $id;
         $this->name = $name;
         $this->java_code = $java_code;
         $this->xml_code = $xml_code;
