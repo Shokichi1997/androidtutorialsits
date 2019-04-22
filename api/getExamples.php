@@ -7,13 +7,13 @@ $res = null;
 include "../lib/db.php";
 $dbconnection = new postgresql("");
 if($dbconnection->isValid()){
-    $sql = "SELECT id,name,java_code,xml_code,icon FROM PUBLIC.examples";
+    $sql = "SELECT id,name,icon FROM PUBLIC.examples";
     $result = $dbconnection->select($sql);
     $res_exam = array();
     if($result!==null){
       	if(pg_num_rows($result)>0){
 		while($data = pg_fetch_object($result)){
-	        	array_push($res_exam, new Example($data->id,$data->name,$data->java_code,$data->xml_code,$data->icon));
+	        	array_push($res_exam, new ExampleSimple($data->id,$data->name,$data->icon));
 	        }	          
 	        $res = new Result(Constant::SUCCESS, 'Operation complete successfully.');   
 	        $res->data = $res_exam;
