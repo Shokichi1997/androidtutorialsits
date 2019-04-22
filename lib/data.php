@@ -71,3 +71,17 @@ class Example
         $this->icon = $icon;
     }
 }
+
+class ExampleSimple
+{
+    public $id;
+    public $name;
+    public $icon;
+    
+    public function __construct($id,$name,$icon)
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->icon = $icon;
+    }
+}
