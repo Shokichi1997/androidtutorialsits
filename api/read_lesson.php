@@ -13,13 +13,13 @@ if($input!=null){
   include "../lib/db.php";
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
-    $sql = "SELECT content FROM public.lesson_item WHERE lesson_item_id = '$lesson_item_id'";
+    $sql = "SELECT lesson_item_name,content FROM public.lesson_item WHERE lesson_item_id = '$lesson_item_id'";
     $result = $dbconnection->select($sql);
     if($result!==null){
       if(pg_num_rows($result)>0)
       {
           //default_charset = "utf-8";
-          $content = (pg_fetch_object($result))->content;
+          $content = pg_fetch_array($result);
           if($content!=null){
             $res = new Result(Constant::SUCCESS, 'Operation complete successfully.');   
             $res->data = $content;
