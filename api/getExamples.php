@@ -7,7 +7,7 @@ $res = null;
 include "../lib/db.php";
 $dbconnection = new postgresql("");
 if($dbconnection->isValid()){
-    $sql = "SELECT id,name,icon FROM PUBLIC.examples";
+    $sql = "SELECT id,name,icon FROM PUBLIC.examples ORDER BY id ASC";
     $result = $dbconnection->select($sql);
     $res_exam = array();
     if($result!==null){
