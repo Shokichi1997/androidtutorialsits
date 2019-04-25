@@ -24,7 +24,7 @@ if(isset($_POST['chapter_id'])){
       }
 
       $sql2 = "SELECT lesson_item_id,lesson_item_name,B.lesson_id,content FROM public.lesson_item A,public.lesson B 
-      WHERE A.lesson_id = B.lesson_id AND B.chapter_id = '$chapter_id'";
+      WHERE A.lesson_id = B.lesson_id AND B.chapter_id = '$chapter_id' ORDER BY lesson_item_id ASC";
       $result2 = $dbconnection->select($sql2);
       $arr_lesson_item = array();
       if($result2!==null){
