@@ -32,10 +32,12 @@ if(isset($_GET['lesson_id'])&&isset($_GET['user_id'])&&isset($_GET['score'])){
       }
       $res = new Result(Constant::SUCCESS , 'Processing request successfully.');
       $res->data = $scoreAdd;
+      $dbconnection->closeResult($result);
     }
     else{
        $res = new Result(Constant::GENERAL_ERROR, 'There was an error while processing request. Please try again later.');
     }
+    $dbconnection->close();
   }
   //$dbconnection->isValid()
   else{
