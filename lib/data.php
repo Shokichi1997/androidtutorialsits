@@ -12,6 +12,7 @@ class Result
 }
 class Constant
 {
+    const PASS_SCORE = 5;
     const INVALID_PARAMETERS = -2;
     const GENERAL_ERROR = -1;
     const SUCCESS = 0;
