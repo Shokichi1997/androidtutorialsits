@@ -19,7 +19,8 @@ class Constant
     const INVALID_PASSWORD = 2;
     const USER_EXIST = 3;
     const EMAIL_EXIST = 4;
-    const INVALID_DATABASE = -3;   
+    const INVALID_DATABASE = -3;  
+    const CHAPTER_NOT_OPENED = -5;
 }
 
 class Question
