@@ -67,3 +67,13 @@ function checkPassLesson($dbconnection, $user_id,$lesson_id){
     $dbconnection->closeResult(result);
   }
 }
+
+function getNumLessonOpened($dbconnection,$user_id){
+  $sql = "SELECT COUNT(*) AS num_lesson FROM PUBLIC.score WHERE user_id = '$user_id'";
+  $result = $dbconnection->select($sql);
+  if($result !== null){
+    $num = (pg_fetch_object(result))->num_lesson;
+    return $num;
+  }
+  result 0;
+}
