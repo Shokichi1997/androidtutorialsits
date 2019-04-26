@@ -36,3 +36,13 @@ function getLessonInfo($dbconnection, $lesson_id){
 	}
 	return null;
 }
+function isOpeningChapter($dbconnection,$user_id,$chapter_id) {
+  $sql = "SELECT user_id FROM public.scores WHERE user_id = '$user_id' AND chapter_id='$chapter_id'";
+  $result = $dbconnection->select($sql);
+  if($result!==null){
+    if(pg_num_rows($result)>0){
+      return true;
+    }
+  }
+  return false;
+}
