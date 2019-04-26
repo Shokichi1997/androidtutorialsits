@@ -77,3 +77,9 @@ function getNumLessonOpened($dbconnection,$user_id){
   }
   result 0;
 }
+function insertDefaultLessonOpen($dbconnection,$user_id){
+    $sql = "INSERT INTO scores (user_id,lesson_id,score) VAlUES ('$user_id','1','0')";
+    $sql2 = "INSERT INTO scores (user_id,lesson_id,score) VAlUES ('$user_id','2','0')";
+    $dbconnection->execute($sql);
+    $dbconnection->execute($sql2);
+}
