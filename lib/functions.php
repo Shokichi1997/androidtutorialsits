@@ -52,19 +52,19 @@ function checkPassLesson($dbconnection, $user_id,$lesson_id){
   $sql = "SELECT lesson_id FROM public.lesson WHERE lesson_before = '$lesson_id'";
   $result = $dbconnection->select($sql);
   if($result!==null){
-    if(pg_num_rows(result)>0){
-      $lesson_id_after = (pg_fetch_object(result))->lesson_id;
+    if(pg_num_rows($result)>0){
+      $lesson_id_after = (pg_fetch_object($result))->lesson_id;
       $sql1 = "SELECT lesson_id FROM public.scores WHERE lesson_id = '$lesson_id_after' AND user_id = '$user_id'";
       $result1 = $dbconnection->select($sql1);
       if($result1!==null){
-        if(pg_num_rows(result1)==0){
+        if(pg_num_rows($result1)==0){
           $sql3 = "INSERT INTO public.scores(user_id,lesson_id,score) VALUES ('$user_id','$lesson_id','0')";
           $dbconnection->execute($sql3);
         }
-	 $dbconnection->closeResult(result1);
+	 $dbconnection->closeResult($result1);
       }
     }
-    $dbconnection->closeResult(result);
+    $dbconnection->closeResult($result);
   }
 }
 
@@ -72,10 +72,10 @@ function getNumLessonOpened($dbconnection,$user_id){
   $sql = "SELECT COUNT(*) AS num_lesson FROM PUBLIC.scores WHERE user_id = '$user_id'";
   $result = $dbconnection->select($sql);
   if($result !== null){
-    $num = (pg_fetch_object(result))->num_lesson;
+    $num = (pg_fetch_object($result))->num_lesson;
     return $num;
   }
-  result 0;
+  return 0;
 }
 function insertDefaultLessonOpen($dbconnection,$user_id){
     $sql = "INSERT INTO scores (user_id,lesson_id,score) VAlUES ('$user_id','1','0')";
