@@ -58,7 +58,7 @@ function checkPassLesson($dbconnection, $user_id,$lesson_id){
       $result1 = $dbconnection->select($sql1);
       if($result1!==null){
         if(pg_num_rows(result1)==0){
-          $sql3 = "INSERT INTO public.scores("user_id","lesson_id","score") VALUES ('$user_id','$lesson_id','0')";
+          $sql3 = "INSERT INTO public.scores(user_id,lesson_id,score) VALUES ('$user_id','$lesson_id','0')";
           $dbconnection->execute($sql3);
         }
 	 $dbconnection->closeResult(result1);
@@ -69,7 +69,7 @@ function checkPassLesson($dbconnection, $user_id,$lesson_id){
 }
 
 function getNumLessonOpened($dbconnection,$user_id){
-  $sql = "SELECT COUNT(*) AS num_lesson FROM PUBLIC.score WHERE user_id = '$user_id'";
+  $sql = "SELECT COUNT(*) AS num_lesson FROM PUBLIC.scores WHERE user_id = '$user_id'";
   $result = $dbconnection->select($sql);
   if($result !== null){
     $num = (pg_fetch_object(result))->num_lesson;
