@@ -49,28 +49,21 @@ function isOpeningChapter($dbconnection,$user_id,$chapter_id) {
 }
 
 function checkPassLesson($dbconnection, $user_id,$lesson_id){
-  $sql = "SELECT score FROM public.scores WHERE user_id = '$user_id' AND $lesson_id = '$lesson_id'";
+  $sql = "SELECT lesson_id FROM public.lesson WHERE lesson_before = '$lesson_id'";
   $result = $dbconnection->select($sql);
   if($result!==null){
     if(pg_num_rows(result)>0){
-      $score = (pg_fetch_object(result))->score;
-      if(score>=PASS_SCORE){
-        $sql2 = "SELECT lesson_id FROM public.lesson WHERE lesson_before = '$lesson_id'";
-        $result2 = $dbconnection->select($sql2);
-        if($result2!==null){
-          if(pg_num_rows(result2)>0){
-            $lesson_id_after = (pg_fetch_object(result))->lesson_id;
-            $sql4 = "SELECT lesson_id FROM public.scores WHERE lesson_id = '$lesson_id_after' AND user_id = '$user_id'";
-            $result1 = $dbconnection->select($sql4);
-            if($result1!==null){
-              if(pg_num_rows(result1)==0){
-                $sql3 = "INSERT INTO public.scores("user_id","lesson_id","score") VALUES ('$user_id','$lesson_id','0')";
-                $dbconnection->execute($sql3);
-              }
-            }
-          }
+      $lesson_id_after = (pg_fetch_object(result))->lesson_id;
+      $sql1 = "SELECT lesson_id FROM public.scores WHERE lesson_id = '$lesson_id_after' AND user_id = '$user_id'";
+      $result1 = $dbconnection->select($sql1);
+      if($result1!==null){
+        if(pg_num_rows(result1)==0){
+          $sql3 = "INSERT INTO public.scores("user_id","lesson_id","score") VALUES ('$user_id','$lesson_id','0')";
+          $dbconnection->execute($sql3);
         }
+	 $dbconnection->closeResult(result1);
       }
     }
+    $dbconnection->closeResult(result);
   }
 }
