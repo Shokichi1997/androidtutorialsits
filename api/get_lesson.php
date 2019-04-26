@@ -8,12 +8,11 @@ if(isset($_POST['chapter_id'])&&isset($_POST['user_id'])){
   $user_id = $_POST['user_id'];
   
   include "../lib/db.php";
-  include "..lib/functions.php";
+  include "../lib/functions.php";
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
 
     if(isOpeningChapter($dbconnection,$user_id,$chapter_id)==true){
-      echo "dung";
       $sql = "SELECT lesson_id,lesson_name,chapter_id,lesson_icon FROM public.lesson WHERE chapter_id = '$chapter_id'";
       $result = $dbconnection->select($sql);
       $arr = array();
