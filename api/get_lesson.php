@@ -8,6 +8,7 @@ if(isset($_POST['chapter_id'])&&isset($_POST['user_id'])){
   $user_id = $_POST['user_id'];
   
   include "../lib/db.php";
+  include "..lib/functions.php";
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
 
