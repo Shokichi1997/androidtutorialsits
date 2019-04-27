@@ -14,15 +14,17 @@ if(isset($_POST['chapter_id'])&&isset($_POST['user_id'])){
     if($chapter_id == 1 || $chapter_id == 2 || isOpeningChapter($dbconnection,$user_id,$chapter_id)==true){
       $sql = "SELECT lesson_id,lesson_name,chapter_id,lesson_icon FROM public.lesson WHERE chapter_id = '$chapter_id'";
       $result = $dbconnection->select($sql);
-      $arr = array();
       $arr_lesson = array();
       if($result!==null){
         if(pg_num_rows($result)>0){
           while($data = pg_fetch_object($result)){
+            $arr_lesson_item = array();
             $arr_lesson_item = getListLessonItem($dbconnection,$data->lesson_id){
             $lesson = new Lesson ($data->lesson_id,$data->lesson_name,$data->chapter_id,$data->lesson_icon,$arr_lesson_item);
             array_push($arr_lesson, $lesson);
           }
+          $res = new Result(Constant::SUCCESS, 'Operation complete successfully.');   
+          $res->data = $arr_lesson;
         }
         else{
           $res = new Result(Constant::GENERAL_ERROR , 'Lesson is not available.');  
@@ -41,7 +43,7 @@ if(isset($_POST['chapter_id'])&&isset($_POST['user_id'])){
   }
 }
 else{
-      $res = new Result(Constant::INVALID_PARAMETERS, 'Invalid parameters.');
+  $res = new Result(Constant::INVALID_PARAMETERS, 'Invalid parameters.');
 }
 echo (json_encode($res,JSON_UNESCAPED_UNICODE));
 
