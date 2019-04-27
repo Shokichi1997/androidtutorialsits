@@ -88,7 +88,7 @@ function getListLessonItem($dbconnection,$lesson_id){
         WHERE lesson_id = $lesson_id ORDER BY lesson_item_id ASC";
   $result = $dbconnection->select($sql);
   $arr = array();
-  if(result!==null){
+  if($result!==null){
     while ($data = pg_fetch_object($result)) {
       array_push($arr, $data);
     }
