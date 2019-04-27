@@ -87,3 +87,18 @@ class ExampleSimple
         $this->icon = $icon;
     }
 }
+class Lesson
+{
+    public $lesson_id;
+    public $lesson_name;
+    public $chapter_id;
+    public $lesson_icon;
+    public $lesson_item_list;
+    public function __construct($lesson_id,$lesson_name,$chapter_id,$lesson_icon,$lesson_item_list)
+    {
+        $this->lesson_id = $lesson_id;  
+        $this->lesson_name = $lesson_name;
+        $this->chapter_id = $chapter_id;
+        $this->lesson_item_list = $lesson_item_list;
+    }
+}
