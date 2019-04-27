@@ -84,14 +84,13 @@ function insertDefaultLessonOpen($dbconnection,$user_id){
     $dbconnection->execute($sql2);
 }
 function getListLessonItem($dbconnection,$lesson_id){
-  $sql = "SELECT lesson_item_id,lesson_item_name,lesson_id,content
-  FROM public.lesson_item WHERE lesson_id = '$lesson_id' ORDER BY lesson_item_id ASC";
+  //$sql = "SELECT lesson_item_id,lesson_item_name,lesson_id,content FROM public.lesson_item WHERE lesson_id = '$lesson_id' ORDER BY lesson_item_id ASC";
 //   $result = $dbconnection->select($sql);
-   $arr = array();
+   //$arr = array();
 //   if($result!==null){
 //     while ($data = pg_fetch_object($result)) {
 //       array_push($arr, $data);
 //     }
 //   }
-  return $arr;
+ // return $arr;
 }
