@@ -19,9 +19,9 @@ if(isset($_POST['chapter_id'])&&isset($_POST['user_id'])){
         if(pg_num_rows($result)>0){
           while($data = pg_fetch_object($result)){
             $arr_lesson_item = array();
-            $arr_lesson_item = getListLessonItem($dbconnection,$data->lesson_id){
-            $lesson = new Lesson ($data->lesson_id,$data->lesson_name,$data->chapter_id,$data->lesson_icon,$arr_lesson_item);
-            array_push($arr_lesson, $lesson);
+            //$arr_lesson_item = getListLessonItem($dbconnection,$data->lesson_id){
+            //$lesson = new Lesson ($data->lesson_id,$data->lesson_name,$data->chapter_id,$data->lesson_icon,$arr_lesson_item);
+            //array_push($arr_lesson, $lesson);
           }
           $res = new Result(Constant::SUCCESS, 'Operation complete successfully.');   
           $res->data = $arr_lesson;
