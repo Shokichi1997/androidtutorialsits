@@ -19,10 +19,10 @@ if(isset($_GET['lesson_id'])&&isset($_GET['user_id'])){
       $num = getNumLessonOpened($dbconnection,$user_id);
       if($num == 0){
         insertDefaultLessonOpen($dbconnection,$user_id);
-        $num = 2;
+        $num = 3;
       }
       array_push($arr,$num);
-      if(pg_num_rows($result)>0 || $lesson_id == 1 || $lesson_id == 2 ){
+      if($lesson_id == 1 || $lesson_id == 2 || $lesson_id = 3 || pg_num_rows($result)>0){
         array_push($arr, 1); //1: open
       }
       else{
