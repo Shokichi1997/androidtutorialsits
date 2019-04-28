@@ -80,8 +80,9 @@ function getNumLessonOpened($dbconnection,$user_id){
 function insertDefaultLessonOpen($dbconnection,$user_id){
     $sql = "INSERT INTO scores (user_id,lesson_id,score) VAlUES ('$user_id','1','0')";
     $sql2 = "INSERT INTO scores (user_id,lesson_id,score) VAlUES ('$user_id','2','0')";
+    $sql3 = "INSERT INTO scores (user_id,lesson_id,score) VAlUES ('$user_id','3','0')";
     $dbconnection->execute($sql);
-    $dbconnection->execute($sql2);
+    $dbconnection->execute($sql3);
 }
 function getListLessonItem($dbconnection,$lesson_id){
   $sql = "SELECT lesson_item_id,lesson_item_name,lesson_id FROM public.lesson_item WHERE lesson_id = '$lesson_id' ORDER BY lesson_item_id ASC";
