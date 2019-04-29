@@ -8,9 +8,7 @@ $result =null;
 if(isset($_POST['user_id']))
 {
   $user_id=$_POST['user_id'];
-  $student_code=$_POST['student_code'];
-  $email=$_POST['email'] ;
-  $full_name=$_POST['full_name'];    
+  
   //connect database
   include ('../lib/db.php');
   //check acount is exsit
