@@ -6,6 +6,7 @@ $res    = null;
 $result =null;
 if(isset($_POST['user_id']) )
 {
+	echo "string";
   $user_id      = $_POST['user_id']
   $student_code = $_POST['student_code'];
  // $password     = $_POST['password'];
