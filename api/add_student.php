@@ -8,7 +8,8 @@ if(isset($_POST['student_code'])){
   $student_code = $_POST['student_code'];
   $password     = "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92";
   $role         =  3; //default role 3(role is student)
-  $full_name    = "anymouse";    
+  $full_name    = "anymouse";
+  $email        = $_POST['email'];    
   //connect database
   include ('../lib/db.php');
   //check acount is exsit
@@ -19,8 +20,8 @@ if(isset($_POST['student_code'])){
      $result = $dbconnection->select($sql_find_user);
       if($result!==null){
         if(pg_num_rows($result)==0){  
-            $sql_dk = "INSERT INTO public.user(full_name,password,role,student_code,date_create)
-            values ('$full_name','$password','$role','$student_code',CURRENT_DATE)";
+            $sql_dk = "INSERT INTO public.user(full_name,password,email,role,student_code,date_create)
+            values ('$full_name','$password','$email','$role','$student_code',CURRENT_DATE)";
             $dbconnection->execute($sql_dk);
             //Registered successfully => return user infor 
             $res = new Result(Constant::SUCCESS,'Registered successfully');
