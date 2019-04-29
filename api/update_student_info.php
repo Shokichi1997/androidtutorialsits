@@ -13,15 +13,9 @@ if(isset($_POST['user_id']))
   include ('../lib/db.php');
   //check acount is exsit
   $sql_find_user = "SELECT * FROM public.user WHERE user_id = '$user_id'";
+  echo $user_id;
   $dbconnection = new postgresql("");
-  if($dbconnection->isValid())
-  {
-  	echo "string";
-  }
-  else{ 
-    //$res = new Result(Constant::INVALID_DATABASE , 'Database is invalid.');  
-    echo "loi";
-   }
+  
   
  }
 else{
