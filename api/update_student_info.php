@@ -9,7 +9,6 @@ if(isset($_POST['user_id']))
 {
   $user_id      = $_POST['user_id']
   $student_code = $_POST['student_code'];
- // $password     = $_POST['password'];
   $email        = $_POST['email'] ;
   $full_name    = $_POST['full_name'];    
   //connect database
@@ -22,7 +21,8 @@ if(isset($_POST['user_id']))
   	echo "string";
   }
   else{ 
-    $res = new Result(Constant::INVALID_DATABASE , 'Database is invalid.');  
+    //$res = new Result(Constant::INVALID_DATABASE , 'Database is invalid.');  
+    echo "loi";
    }
   
  }
