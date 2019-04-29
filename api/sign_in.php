@@ -3,11 +3,11 @@ header('Content-Type: application/json');
 include "../lib/data.php";
 //Test
 $res = null;
-if (isset($_POST["email"]) && isset($_POST["password"])) {
+if (isset($_POST["student_code"]) && isset($_POST["password"])) {
      $password = $_POST["password"];
-     $email = $_POST["email"];
+     $student_code = $_POST["student_code"];
     
-    $sql = "SELECT * FROM public.user WHERE email ='$email'";
+    $sql = "SELECT * FROM public.user WHERE student_code ='$student_code'";
     // ket noi database
     include "../lib/db.php";
     $dbconnection = new postgresql("");
