@@ -8,7 +8,9 @@ $result =null;
 if(isset($_POST['user_id']))
 {
   $user_id=$_POST['user_id'];
-  
+  $email =$_POST['email'];
+  $student_code=$_POST['student_code'];
+  $full_name=$_POST['full_name'];
   //connect database
   include ('../lib/db.php');
   //check acount is exsit
@@ -16,13 +18,35 @@ if(isset($_POST['user_id']))
   $dbconnection = new postgresql("");
   if($dbconnection->isValid())
   {
-  	 
-  	echo "string";
+     $result = $dbconnection->select($sql_find_user);
+      if($result!==null){
+        if(pg_num_rows($result)!=0){  
+            $sql_update_user = "UPDATE  public.user
+                                SET full_name='$full_name',email='$email',student_code='$student_code'
+                                WHERE user_id='$user_id' ";
+            $dbconnection->execute($sql_update_user);
+            //update successfully => return user infor 
+            $user=null;
+            $user->user_id=$user_id;
+            $user->full_name=$full_name;
+            $user->email=$email;
+            
+            $res->data=user;//set data for res
+            $res = new Result(Constant::SUCCESS,'Update successfully');
+        }// Excute sql update info student
+        else{
+           $res = new Result(Constant::USER_EXIST , 'User is not exist');
+        }// User is not exist
+        $dbconnection->closeResult($result);
+      }
+      else{
+        $res = new Result(Constant::GENERAL_ERROR, 'There was an error while processing request. Please try again later.');
+      }
+    $dbconnection->close();
   }
   else{ 
-    //$res = new Result(Constant::INVALID_DATABASE , 'Database is invalid.');  
-    echo "loi";
-   }
+    $res = new Result(Constant::INVALID_DATABASE , 'Database is invalid.');  
+    }
   
  }
 else{
