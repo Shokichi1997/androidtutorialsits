@@ -4,10 +4,10 @@ header('Content-Type: application/json');
 include "../lib/data.php";
 $res    = null;
 $result =null;
-echo "string";
+
 if(isset($_POST['user_id']))
 {
-	
+	echo "string";
   $user_id      = $_POST['user_id']
   $student_code = $_POST['student_code'];
  // $password     = $_POST['password'];
