@@ -19,6 +19,7 @@ if(isset($_POST['user_id']))
   $dbconnection = new postgresql("");
   if($dbconnection->isValid())
   {
+  	echo "string";
      $result = $dbconnection->select($sql_find_user);
       if($result!==null){
         if(pg_num_rows($result)!=0){  
