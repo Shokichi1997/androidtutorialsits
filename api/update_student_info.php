@@ -13,6 +13,7 @@ if(isset($_POST['user_id']))
   //check acount is exsit
   $sql_find_user = "SELECT * FROM public.user WHERE user_id = '$user_id'";
   echo "string";
+  
   $dbconnection = new postgresql("");
   
   
