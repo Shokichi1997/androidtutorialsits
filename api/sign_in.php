@@ -27,7 +27,6 @@ if (isset($_POST["student_code"]) && isset($_POST["password"])) {
             if ($dbpassword !== null) {
                 if (strcasecmp($dbpassword, $password) == 0) {
                     $res = new Result(Constant::SUCCESS, 'Operation complete successfully.');
-                    unset($user->password);
                     $res->data = $user;
                 } else {
                     $res = new Result(Constant::INVALID_PASSWORD, 'Password is not matching.');
