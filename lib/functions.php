@@ -58,7 +58,7 @@ function checkPassLesson($dbconnection, $user_id,$lesson_id){
       $result1 = $dbconnection->select($sql1);
       if($result1!==null){
         if(pg_num_rows($result1)==0){
-          $sql3 = "INSERT INTO public.scores(user_id,$lesson_id_after,score) VALUES ('$user_id','$lesson_id_after','0')";
+          $sql3 = "INSERT INTO public.scores(user_id,$lesson_id,score) VALUES ('$user_id','$lesson_id_after','0')";
           $dbconnection->execute($sql3);
         }
 	 $dbconnection->closeResult($result1);
