@@ -7,7 +7,7 @@ $res = null;
 include "../lib/db.php";
 $dbconnection = new postgresql("");
 if($dbconnection->isValid()){
-    $sql = "SELECT PUBLIC.scores.lesson_id,PULIC.lesson.lesson_name,PUCLIC.scores.score FROM PUBLIC.scores INNER JOIN PUBLIC.lesson ON PUBLIC.scores.lesson_id=PUBLIC.lesson.lesson_id";
+    $sql = "SELECT scores.lesson_id,lesson.lesson_name,scores.score FROM scores INNER JOIN lesson ON scores.lesson_id=lesson.lesson_id WHERE scores.user_id=1";
     $result = $dbconnection->select($sql);
     $res_lesson = array();
     if($result!==null){
