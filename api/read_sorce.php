@@ -5,9 +5,11 @@ include "../lib/data.php";
 $result = null;
 $res = null;
 include "../lib/db.php";
-$dbconnection = new postgresql("");
+if(isset($_GET["user_id"])){
+  $user_id=$_GET["user_id"];
+ $dbconnection = new postgresql("");
 if($dbconnection->isValid()){
-    $sql = "SELECT scores.lesson_id,lesson.lesson_name,scores.score FROM scores INNER JOIN lesson ON scores.lesson_id=lesson.lesson_id WHERE scores.user_id=1";
+    $sql = "SELECT scores.lesson_id,lesson.lesson_name,scores.score FROM scores INNER JOIN lesson ON scores.lesson_id=lesson.lesson_id WHERE scores.user_id='$user_id'";
     $result = $dbconnection->select($sql);
     $res_lesson = array();
     if($result!==null){
@@ -31,4 +33,8 @@ if($dbconnection->isValid()){
 else{
   $res = new Result(Constant::INVALID_DATABASE , 'Database is invalid.');  
 }
+}else{
+ $res = new Result(Constant::INVALID_PARAMETERS, 'Invalid parameters.');
+}
+
 echo (json_encode($res,JSON_UNESCAPED_UNICODE));
