@@ -9,7 +9,7 @@ if(isset($_GET["user_id"])){
   $user_id=$_GET["user_id"];
  $dbconnection = new postgresql("");
 if($dbconnection->isValid()){
-    $sql = "SELECT scores.lesson_id,lesson.lesson_name,scores.score FROM scores INNER JOIN lesson ON scores.lesson_id=lesson.lesson_id WHERE scores.user_id='$user_id'";
+    $sql = "SELECT scores.user_id,scores.lesson_id,lesson.lesson_name,scores.score FROM scores INNER JOIN lesson ON scores.lesson_id=lesson.lesson_id WHERE scores.user_id='$user_id'";
     $result = $dbconnection->select($sql);
     $res_lesson = array();
     if($result!==null){
