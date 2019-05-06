@@ -25,6 +25,16 @@ function getLevelQuestion($dbconnection,$user_id,$lesson_id){
 	}
 }
 
+function getHintQuestion($dbconnection, $question_id, $level){
+  $sql = "SELECT hint from public.hint WHERE question_id = '$question_id' AND level = '$level'";
+  $result = $dbconnection->select($sql);
+  if($result!==null){
+    $hint = pg_fetch_object($result);
+    return $hint;
+  }
+  return null;
+}
+
 function getLessonInfo($dbconnection, $lesson_id){
 	$sql = "SELECT lesson_id,lesson_name,chapter_id,lesson_icon FROM public.lesson WHERE lesson_id = '$lesson_id'";
 	$result = $dbconnection->select($sql);
@@ -95,3 +105,5 @@ function getListLessonItem($dbconnection,$lesson_id){
   }
  return $arr;
 }
+
+
