@@ -8,7 +8,7 @@
 	  	$user_id = $_GET['user_id'];
 	  	$dbconnection = new postgresql("");
 	  	if($dbconnection->isValid()){
-	    $sql = "SELECT lesson_id FROM PUBLIC.scores WHERE user_id = '$user_id'";
+	    $sql = "SELECT lesson_id FROM PUBLIC.scores WHERE user_id = '$user_id' ORDER BY lesson_id ASC";
 	    $result = $dbconnection->select($sql);
 	    $res_lesson = array();
 	    if($result!==null){
