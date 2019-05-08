@@ -92,6 +92,7 @@ function insertDefaultLessonOpen($dbconnection,$user_id){
     $sql2 = "INSERT INTO scores (user_id,lesson_id,score) VAlUES ('$user_id','2','0')";
     $sql3 = "INSERT INTO scores (user_id,lesson_id,score) VAlUES ('$user_id','3','0')";
     $dbconnection->execute($sql);
+    $dbconnection->execute($sql2);
     $dbconnection->execute($sql3);
 }
 function getListLessonItem($dbconnection,$lesson_id){
