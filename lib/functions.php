@@ -30,7 +30,7 @@ function getHintQuestion($dbconnection, $question_id, $level){
   $result = $dbconnection->select($sql);
   if($result!==null){
     $hint = pg_fetch_object($result);
-    return $hint;
+    return $hint->hint;
   }
   return null;
 }
