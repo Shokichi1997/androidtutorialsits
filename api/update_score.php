@@ -26,7 +26,7 @@ if(isset($_GET['lesson_id'])&&isset($_GET['user_id'])&&isset($_GET['score'])){
         $scoreAdd = $scoreAdd + $current_score;
         $sql_update = "UPDATE public.scores SET score = '$scoreAdd' WHERE user_id = '$user_id' AND lesson_id = '$lesson_id'";
         $dbconnection->execute($sql_update);
-        if($current_score!=null && $current_score >= Constant::PASS_SCORE){
+        if($scoreAdd >= Constant::PASS_SCORE){
             checkPassLesson($dbconnection, $user_id,$lesson_id);
         }
         $res = new Result(Constant::SUCCESS , 'Processing request successfully.');
