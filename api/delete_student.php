@@ -4,8 +4,8 @@ header('Content-Type: application/json');
 include "../lib/data.php";
 $res = null;
 
-if(isset($_GET['user_id'])){
-  $user_id = $_GET['user_id'];
+if(isset($_POST['user_id'])){
+  $user_id = $_POST['user_id'];
   include "../lib/db.php";
   $dbconnection = new postgresql("");
   if($dbconnection->isValid()){
