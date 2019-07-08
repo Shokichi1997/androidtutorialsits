@@ -5,12 +5,12 @@ include "../lib/data.php";
 $res    = null;
 $result =null;
 
-if(isset($_PUT['user_id']))
+if(isset($_GET['user_id']))
 {
-  $user_id=$_PUT['user_id'];
-  $email =$_PUT['email'];
-  $student_code=$_PUT['student_code'];
-  $full_name=$_PUT['full_name'];
+  $user_id=$_GET['user_id'];
+  $email =$_GET['email'];
+  $student_code=$_GET['student_code'];
+  $full_name=$_GET['full_name'];
   //connect database
   include ('../lib/db.php');
   //check acount is exsit
